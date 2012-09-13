@@ -1,0 +1,34 @@
+application: mohayonao-com
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /
+  static_files: static/index.html
+  upload: static/index.html
+  
+- url: /(.*\..*)
+  static_files: static/\1
+  upload: static/(.*\..*)
+  
+- url: /(.*)/
+  static_files: static/\1/index.html
+  upload: static/(.*)/index.html
+
+libraries:
+- name: webapp2
+  version: "2.5.1"
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?node_modules/.*
