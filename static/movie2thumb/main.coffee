@@ -61,7 +61,7 @@ $ ->
                     @initCanvas()
                     @seek callback
                 $(video).on 'seeked', =>
-                    @fetchAndDraw =>
+                    @draw =>
                         @seek callback
                 video.type = file.type
                 video.src  = createObjectURL file
@@ -101,11 +101,11 @@ $ ->
             if not @video or time is undefined then return callback?()
             @video.currentTime = time
 
-        fetchAndDraw: (callback)->
+        draw: (callback)->
             x = (@count % @lenX)
             y = (@count / @lenX)|0
             @context.drawImage @video, 0, 0, @sw, @sh, @dw * x, @dh * y, @dw, @dh
             @count += 1
-            callback()
+            callback?()
 
     app = new App(document.getElementById 'container2')

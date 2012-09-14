@@ -75,7 +75,7 @@
             return _this.seek(callback);
           });
           $(video).on('seeked', function() {
-            return _this.fetchAndDraw(function() {
+            return _this.draw(function() {
               return _this.seek(callback);
             });
           });
@@ -136,13 +136,13 @@
         return this.video.currentTime = time;
       };
 
-      App.prototype.fetchAndDraw = function(callback) {
+      App.prototype.draw = function(callback) {
         var x, y;
         x = this.count % this.lenX;
         y = (this.count / this.lenX) | 0;
         this.context.drawImage(this.video, 0, 0, this.sw, this.sh, this.dw * x, this.dh * y, this.dw, this.dh);
         this.count += 1;
-        return callback();
+        return typeof callback === "function" ? callback() : void 0;
       };
 
       return App;
