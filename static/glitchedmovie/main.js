@@ -23,7 +23,7 @@
       $('#container1').width(w);
       return $('#container2').width(w).height(h);
     };
-    if (window.innerWidth < 800 || window.innerWidth < 600) {
+    if (window.innerWidth < 800 || window.innerHeight < 600) {
       resizeContainer(640, 480);
     } else if (window.innerWidth < 980 || window.innerHeight < 760) {
       resizeContainer(800, 600);
