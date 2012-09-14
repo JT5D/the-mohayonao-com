@@ -5,17 +5,13 @@ api_version: 1
 threadsafe: yes
 
 handlers:
-- url: /
-  static_files: static/index.html
-  upload: static/index.html
-  
-- url: /(.*\..*)
+- url: (.*)/
+  static_files: static\1/index.html
+  upload: static(.*)/index.html
+
+- url: /(.*)
   static_files: static/\1
-  upload: static/(.*\..*)
-  
-- url: /(.*)/
-  static_files: static/\1/index.html
-  upload: static/(.*)/index.html
+  upload: static/(.*)  
 
 libraries:
 - name: webapp2
