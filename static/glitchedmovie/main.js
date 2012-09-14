@@ -4,7 +4,7 @@
   $(function() {
     'use strict';
 
-    var App, AudioProcessor, GlitchProcessor, PREVIEW_HEIGHT, PREVIEW_WIDTH, VideoProcessor, app, createObjectURL, requestAnimationFrame, _ref;
+    var App, AudioProcessor, GlitchProcessor, PREVIEW_HEIGHT, PREVIEW_WIDTH, VideoProcessor, app, createObjectURL, requestAnimationFrame, resizeContainer, _ref;
     PREVIEW_WIDTH = 480;
     PREVIEW_HEIGHT = 360;
     createObjectURL = (_ref = window.URL || window.webkitURL) != null ? _ref.createObjectURL : void 0;
@@ -19,6 +19,15 @@
       }
       return false;
     });
+    resizeContainer = function(w, h) {
+      $('#container1').width(w);
+      return $('#container2').width(w).height(h);
+    };
+    if (window.innerWidth < 800 || window.innerWidth < 600) {
+      resizeContainer(640, 480);
+    } else if (window.innerWidth < 980 || window.innerHeight < 760) {
+      resizeContainer(800, 600);
+    }
     if (!webkitAudioContext) {
       return;
     }
