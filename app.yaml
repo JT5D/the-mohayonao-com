@@ -28,3 +28,6 @@ skip_files:
 - ^(.*/)?.*/RCS/.*
 - ^(.*/)?\..*
 - ^(.*/)?node_modules/.*
+- ^(.*/)?Procfile
+- ^(.*/)?package\.json
+- ^(.*/)?.*\.coffee
