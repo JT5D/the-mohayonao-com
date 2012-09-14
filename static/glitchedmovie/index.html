@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Glitched Movie Player</title>
+    <link rel="shortcut icon" href="./favicon.ico">
+    <style>
+      #preview:-webkit-full-screen {
+        position:absolute;top:0;left:0;
+        width:100%;height:100%;
+      }
+    </style>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21613416-9']);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body style="margin:0">
+    <div style="font-family:'Arial';background:#ededed;padding:5px">
+      <strong>Glitched Movie Player</strong> / drag & drop movie files to play
+    </div>
+    <div style="padding:20px">
+      <div style="margin:0 auto;width:960px">
+        <div style="border:solid 1px gray;width:960px;height:720px;">
+          <canvas id="preview" style="width:100%;height:100%"></canvas>
+        </div>
+        <input type="range" max=10000 value=0 id="currentTime" style="width:960px">
+        <div style="font-size:smaller;font-weight:bold;">
+          <button id="play">Play</button>
+          <button id="pause">Pause</button>
+          System Requirements: Google Chrome (using Web Audio API)
+          <span style="float:right">
+            <input type="checkbox" name="processing" id="processing" checked><label for="processing">Processing</label>
+            <input type="checkbox" name="loop" id="loop"><label for="loop">Loop</label>
+            <button id="full-screen">Full Screen</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
