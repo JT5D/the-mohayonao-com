@@ -14,14 +14,14 @@ $ ->
                 app.getImage()
         false
 
-    resizeContainer = (w, h)->
-        $('#container1').width(w)
-        $('#container2').width(w).height(h)
+    resizeContainer = do ->
+        $container = $('#container')
+        ->
+            $container.height ($container.width() * 0.75)|0
+            app?.resize()
 
-    if window.innerWidth < 800 or window.innerHeight < 600
-        resizeContainer 640, 480
-    else if window.innerWidth < 980 or window.innerHeight < 760
-        resizeContainer 800, 600
+    $(window).on 'resize', resizeContainer
+    resizeContainer()
 
     unless createObjectURL then return
 
@@ -40,16 +40,15 @@ $ ->
             @target = target
             @video  = null
             @count  = 0
-            @width  = $(target).width()
-            @height = $(target).height()
-            canvas  = document.createElement 'canvas'
-            canvas.width  = @width
-            canvas.height = @height
-            $(canvas).width (@width )
-            $(canvas).height(@height)
-            @canvas  = canvas
-            @context = canvas.getContext '2d'
+            @canvas  = document.createElement 'canvas'
+            @canvas  = @canvas
+            @context = @canvas.getContext '2d'
             @shuffle = false
+            @resize()
+
+        resize: ->
+            $(@canvas).width (@canvas.width  = @width  = $(@target).width() )
+            $(@canvas).height(@canvas.height = @height = $(@target).height())
 
         preview: (file, callback)->
             video = document.createElement 'video'
@@ -108,4 +107,4 @@ $ ->
             @count += 1
             callback?()
 
-    app = new App(document.getElementById 'container2')
+    app = new App(document.getElementById 'thumbs')

@@ -19,15 +19,15 @@
       }
       return false;
     });
-    resizeContainer = function(w, h) {
-      $('#container1').width(w);
-      return $('#container2').width(w).height(h);
-    };
-    if (window.innerWidth < 800 || window.innerHeight < 600) {
-      resizeContainer(640, 480);
-    } else if (window.innerWidth < 980 || window.innerHeight < 760) {
-      resizeContainer(800, 600);
-    }
+    resizeContainer = (function() {
+      var $container;
+      $container = $('#container');
+      return function() {
+        return $container.height(($container.width() * 0.75) | 0);
+      };
+    })();
+    $(window).on('resize', resizeContainer);
+    resizeContainer();
     if (!webkitAudioContext) {
       return;
     }

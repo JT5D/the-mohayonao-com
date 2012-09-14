@@ -19,15 +19,16 @@
       }
       return false;
     });
-    resizeContainer = function(w, h) {
-      $('#container1').width(w);
-      return $('#container2').width(w).height(h);
-    };
-    if (window.innerWidth < 800 || window.innerHeight < 600) {
-      resizeContainer(640, 480);
-    } else if (window.innerWidth < 980 || window.innerHeight < 760) {
-      resizeContainer(800, 600);
-    }
+    resizeContainer = (function() {
+      var $container;
+      $container = $('#container');
+      return function() {
+        $container.height(($container.width() * 0.75) | 0);
+        return typeof app !== "undefined" && app !== null ? app.resize() : void 0;
+      };
+    })();
+    $(window).on('resize', resizeContainer);
+    resizeContainer();
     if (!createObjectURL) {
       return;
     }
@@ -46,21 +47,20 @@
     App = (function() {
 
       function App(target) {
-        var canvas;
         this.target = target;
         this.video = null;
         this.count = 0;
-        this.width = $(target).width();
-        this.height = $(target).height();
-        canvas = document.createElement('canvas');
-        canvas.width = this.width;
-        canvas.height = this.height;
-        $(canvas).width(this.width);
-        $(canvas).height(this.height);
-        this.canvas = canvas;
-        this.context = canvas.getContext('2d');
+        this.canvas = document.createElement('canvas');
+        this.canvas = this.canvas;
+        this.context = this.canvas.getContext('2d');
         this.shuffle = false;
+        this.resize();
       }
+
+      App.prototype.resize = function() {
+        $(this.canvas).width((this.canvas.width = this.width = $(this.target).width()));
+        return $(this.canvas).height(this.canvas.height = this.height = $(this.target).height());
+      };
 
       App.prototype.preview = function(file, callback) {
         var type, video,
@@ -148,7 +148,7 @@
       return App;
 
     })();
-    return app = new App(document.getElementById('container2'));
+    return app = new App(document.getElementById('thumbs'));
   });
 
 }).call(this);

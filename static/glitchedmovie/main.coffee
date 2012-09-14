@@ -17,14 +17,12 @@ $ ->
             app.setFiles e.originalEvent.dataTransfer.files
         false
 
-    resizeContainer = (w, h)->
-        $('#container1').width(w)
-        $('#container2').width(w).height(h)
+    resizeContainer = do ->
+        $container = $('#container')
+        -> $container.height ($container.width() * 0.75)|0
 
-    if window.innerWidth < 800 or window.innerHeight < 600
-        resizeContainer 640, 480
-    else if window.innerWidth < 980 or window.innerHeight < 760
-        resizeContainer 800, 600
+    $(window).on 'resize', resizeContainer
+    resizeContainer()
 
     unless webkitAudioContext    then return
     unless createObjectURL       then return
