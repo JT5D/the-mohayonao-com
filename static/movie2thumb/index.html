@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Movie to Thumb</title>
+    <link rel="shortcut icon" href="./favicon.ico">
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21613416-9']);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body style="margin:0">
+    <div style="font-family:'Arial';background:#ededed;padding:5px">
+      <strong>Movie to Thumb</strong> / drag & drop a movie file to get thumbnails
+    </div>
+    <div style="padding:20px">
+      <div style="margin:0 auto;width:960px" id="container1">
+        <div style="border:solid 1px gray;width:960px;height:720px" id="container2"></div>
+        <span style="float:right">
+          <div style="font-size:smaller;font-weight:bold;">
+            <input type="checkbox" name="shuffle" id="shuffle"><label for="shuffle">Shuffle</label>
+          </div>
+        </span>
+      </div>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
