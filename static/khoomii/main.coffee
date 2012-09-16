@@ -23,7 +23,7 @@ $ ->
     f3 = T('rbpf').set(cutoff:T('glide', 150, 2900), Q:0.9, depth:0.75).append synth
     synth = T('+', f1, f2, f3)
     synth = T('-', synth, orig).set(mul:0.4)
-    synth = T('bpf').set(freq:3200, band:0.25).append synth
+    synth = T('bpf').set(freq:2700, band:0.25).append synth
 
     timer = T 'interval', 250, ->
         f = formants[choice 'aiueo']
