@@ -24,18 +24,19 @@
   </head>
   <body style="margin:0">
     <div style="font-family:'Arial';background:#ededed;padding:5px">
-      <strong>Glitched Movie Player</strong> / drag & drop movie files to play
+      <a href="/" style="color:#1e50a2;text-decoration:none">the.mohayonao.com</a> &gt;
+      <strong>Glitched Movie Player</strong>
     </div>
     <div style="padding:20px">
       <div style="margin:0 auto;min-width:540px;width:80%" id="container">
+        <small>drag & drop movie files to play <span style="color:#9ea1a3"># System Requirements: Google Chrome (using Web Audio API)</span></small>
         <div style="border:solid 1px gray;height:100%">
           <canvas style="width:100%;height:100%" id="preview"></canvas>
         </div>
         <input type="range" max="10000" value="0" id="currentTime" style="width:100%">
-        <div style="font-size:smaller;font-weight:bold;">
+        <div style="font-size:smaller;font-weight:bold">
           <button id="play">Play</button>
           <button id="pause">Pause</button>
-          System Requirements: Google Chrome (using Web Audio API)
           <span style="float:right">
             <input type="checkbox" name="processing" id="processing" checked><label for="processing">Processing</label>
             <input type="checkbox" name="loop" id="loop"><label for="loop">Loop</label>
