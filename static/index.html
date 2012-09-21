@@ -14,6 +14,7 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       a { color:#1e50a2; }
       #app-list { list-style: none }
@@ -21,6 +22,9 @@
       #app-list div { height:200px; }
       #app-list img { margin:10px; width:180px; height:180px; }
       #app-list h2  { margin:0; padding:10px 5px; background:#fbfaf5; border: dashed 0 #f3f3f2; border-width: 1px 0 0; font-size:14px; font-family:fantasy; text-shadow: 1px 0 0 #8491c3; }
+    </style>
+    <style media="only screen and (max-device-width: 480px)">
+      #app-list li { display:block; width:200px; margin-bottom:20px; }
     </style>
   </head>
   <body style="margin:0">
@@ -50,6 +54,12 @@
           <a href="/khoomii/" title="Formant Khoomii">
             <div><img src="/khoomii/appimage.png" /></div>
             <h2>Formant Khoomii</h2>
+          </a>
+        </li>
+        <li>
+          <a href="/scalablemario/" title="Scalable Mario">
+            <div><img src="/scalablemario//appimage.png" /></div>
+            <h2>Scalable Mario</h2>
           </a>
         </li>
       </ul>
