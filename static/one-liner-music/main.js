@@ -31,6 +31,8 @@
           return _results;
         } else {
           switch (e.data) {
+            case 'ready':
+              return this.ready();
             case 'error':
               return typeof this.onerror === "function" ? this.onerror() : void 0;
             case 'accept':
@@ -64,10 +66,16 @@
       };
 
       OneLinerProcessor.prototype.setFunction = function(func) {
-        var _this = this;
         this.func = func;
+        if (this.worker) {
+          this.worker.terminate();
+        }
         this.worker = new Worker('/one-liner-music/worker.js');
-        this.worker.onmessage = onmessage.bind(this);
+        return this.worker.onmessage = onmessage.bind(this);
+      };
+
+      OneLinerProcessor.prototype.ready = function() {
+        var _this = this;
         this.accept = false;
         this.worker.postMessage(this.func);
         if (this.acceptTimerId) {
@@ -354,7 +362,7 @@
       url = lis.join("&");
       return window.open(url, "intent", "width=" + w + ",height=" + h + ",left=" + x + ",top=" + y);
     });
-    if ((q = location.search.substr(1, -1))) {
+    if ((q = location.search.substr(1, location.search.length - 2))) {
       $func.val(decodeURIComponent(q));
     } else if (history[0]) {
       $func.val(history[0]);

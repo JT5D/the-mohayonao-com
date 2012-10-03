@@ -27,7 +27,7 @@
         return null;
       }
     };
-    return _this.onmessage = function(e) {
+    _this.onmessage = function(e) {
       var res;
       if (typeof e.data === 'string') {
         try {
@@ -50,6 +50,7 @@
         }
       }
     };
+    return _this.postMessage('ready');
   })(evalFunction);
 
 }).call(this);

@@ -34,3 +34,4 @@ do (evalFunction)=>
             else
                 tcnt += res.length
                 @postMessage res
+    @postMessage 'ready'

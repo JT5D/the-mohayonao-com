@@ -19,6 +19,8 @@ $ ->
                 for i in [0...stream.length]
                     @buffer[@windex++ & BUFFER_MASK] = stream[i]
             else switch e.data
+                when 'ready'
+                    @ready()
                 when 'error'
                     @onerror?()
                 when 'accept'
@@ -42,9 +44,12 @@ $ ->
             @buffer[@rindex++ & BUFFER_MASK]
 
         setFunction: (@func)->
+            if @worker then @worker.terminate()
+
             @worker = new Worker('/one-liner-music/worker.js')
             @worker.onmessage = onmessage.bind @
 
+        ready: ->
             @accept = false
             @worker.postMessage @func
 
@@ -277,7 +282,7 @@ $ ->
         url = lis.join "&"
         window.open url, "intent", "width=#{w},height=#{h},left=#{x},top=#{y}"
 
-    if (q = location.search.substr 1, -1)
+    if (q = location.search.substr(1, location.search.length - 2))
         $func.val decodeURIComponent q
     else if history[0]
         $func.val history[0]
