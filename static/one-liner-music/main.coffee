@@ -267,7 +267,7 @@ $ ->
 
         baseurl = location.protocol + "//" + location.host + location.pathname
         text    = "いい曲できた"
-        func    = processor.func.replace(/\s/g, '_')
+        func    = encodeURIComponent processor.func
 
         lis = [
             "http://twitter.com/share?lang=ja"
@@ -278,7 +278,7 @@ $ ->
         window.open url, "intent", "width=#{w},height=#{h},left=#{x},top=#{y}"
 
     if (q = location.search.substr 1)
-        $func.val decodeURI q.replace(/_/g, ' ')
+        $func.val decodeURIComponent q
     else if history[0]
         $func.val history[0]
 
