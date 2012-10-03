@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>one-liner-music</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <style media="only screen and (max-device-width: 480px)">
+      .mobile-hide { display:none }
+    </style>
+  </head>
+  <body style="margin:0">
+    <div style="font-family:'Arial';background:#ededed;padding:5px">
+      <a href="/" style="color:#1e50a2;text-decoration:none">the.mohayonao.com</a> &gt;
+      <strong>one-liner-music</strong>
+      <span style="position:absolute;top:3px;right:5px;opacity:0.25">
+        <a href="https://github.com/mohayonao/the-mohayonao-com/tree/master/static/one-liner-music">
+          <img src="/libs/github.png" style="width:22px;height:22px;">
+        </a>
+      </span>
+    </div>
+
+    <div style="padding:20px;font-family:'Courier New', monospace">
+      <button id="play">PLAY</button>
+      <button id="tweet" class="mobile-hide">TWEET</button>
+      <div style="margin:15px 0;font-size:1.25em">
+        function (t) {<br/>
+        <div style="padding:0 15px">
+          <input type="text" id="func" style="width:100%;font-family:'Courier New',monospace;font-size:1em" placeholder="return" />
+        </div>
+        }<br/>
+      </div>
+      <ul style="list-style:square">
+        <li id="history" style="list-style:none;font-weight:bold">History</li>
+      </ul>
+    </div>
+    <script src="/libs/jquery.min.js"></script>
+    <script src="/libs/MutekiTimer.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
