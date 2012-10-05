@@ -72,7 +72,7 @@
             
               envelope = context.createGainNode();
               envelope.gain.linearRampToValueAtTime(0, ct);
-              envelope.gain.linearRampToValueAtTime(volume, ct + 0.05);
+              envelope.gain.linearRampToValueAtTime(volume, ct + 0.01);
 
               oscillator.connect(envelope);
               envelope.connect(context.destination);
