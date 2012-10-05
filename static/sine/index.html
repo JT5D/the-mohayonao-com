@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>sine</title>
     <meta name="viewport" content="width=320,initial-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="no">
     <link rel="apple-touch-icon" href="./apple-touch-icon-precomposed.png">
     <link rel="shortcut icon" href="./favicon.ico">
   </head>
@@ -58,9 +59,8 @@
 
         var touch = function(e) {
           e.preventDefault();
-
+          
           var ct = context.currentTime;
-                              
           if (e.touches.length > 0) {
             if (touchMode === 'none') {
               if (oscillator) oscillator.disconnect();
@@ -116,18 +116,16 @@
           switch (touchMode) {
             case "frequency":
               var d = calc2pointsDistance(e);
-              frequency *= Math.pow(2, (D - d) / 24);
+              frequency *= Math.pow(2, (D - d) / 256);
               frequency = Math.max(220, Math.min(7040, frequency));
-              oscillator.frequency.cancelScheduledValues(ct);
-              oscillator.frequency.linearRampToValueAtTime(frequency, ct + 0.01);
+              oscillator.frequency.value = frequency;
               D = d;
               break;
             case "volume":
               var v = calcVolumeY(e);
               volume += (V - v) * 0.01;
               volume = Math.max(0, Math.min(1, volume));
-              envelope.gain.cancelScheduledValues(ct);
-              envelope.gain.linearRampToValueAtTime(volume, ct + 0.01);
+              envelope.gain.linearRampToValueAtTime(volume, ct);
               V = v;
               break;
           }
