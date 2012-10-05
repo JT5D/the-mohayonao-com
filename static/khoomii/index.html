@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Formant Khoomii</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/libs/common.css" />
     <link rel="stylesheet" href="/libs/prettify.css" />
     <link rel="shortcut icon" href="./favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style media="only screen and (max-device-width: 480px)">
       .prettyprint { font-size:6px; }
     </style>
@@ -21,20 +22,20 @@
       })();
     </script>
   </head>
-  <body style="margin:0">
-    <div style="font-family:'Arial';background:#ededed;padding:5px">
-      <a href="/" style="color:#1e50a2;text-decoration:none">the.mohayonao.com</a> &gt;
+  <body>
+    <div class="header">
+      <a href="/">the.mohayonao.com</a> &gt;
       <strong>Formant Khoomii</strong>
-      <span style="position:absolute;top:3px;right:5px;opacity:0.25">
+      <span class="hidden-phone">
         <a href="https://github.com/mohayonao/the-mohayonao-com/tree/master/static/khoomii">
-          <img src="/libs/github.png" style="width:22px;height:22px;">
+          <img src="/libs/github.png">
         </a>
       </span>
     </div>
-    <div style="padding:20px">
+    <div class="contents">
       <div>
-        <button id="play">Play</button>
-        <button id="pause">Pause</button>
+        <button id="play" class="btn">Play</button>
+        <button id="pause" class="btn">Pause</button>
       </div>
       
       <pre class="prettyprint lang-coffee" style="font-family:'Courier', monospace"># using timbre.js
