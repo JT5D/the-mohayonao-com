@@ -10,7 +10,7 @@
   </head>
   <body style="width:320px;margin:0;padding:0">
     <div style="font-family:'helvetica';text-align:center;font-weight:bold">
-      <h1 style="margin:0;padding-top:10px;height:30x">sine</h1>
+      <h1 style="margin:0;padding-top:20px">sine</h1>
       <canvas id="view" style="width:320px;height:220px"></canvas>    
       <div style="margin:0;padding-top:10px;width:320px;font-size:12px;list-style:none" id="text">
         1. TAP to PLAY<br/>
@@ -84,8 +84,8 @@
             oscillator.noteOff(ct + 0.25);
             
             timerId = setTimeout(function() {
-              oscillator.disconnect();
-              envelope.disconnect();
+              if (oscillator) oscillator.disconnect();
+              if (envelope  ) envelope.disconnect();
               oscillator = envelope = timerId = null;
             }, 250);
           }
